@@ -16,12 +16,12 @@ $DomainCred = New-Object System.Management.Automation.PSCredential $user, $pass
 
 # Place the computer in the correct OU based on hostname
 If ($hostname -eq "wef") {
-  Add-Computer -DomainName "windomain.local" -credential $DomainCred -OUPath "ou=Servers,dc=windomain,dc=local" -PassThru
+  Add-Computer -DomainName "WINDOMAIN.local" -credential $DomainCred -OUPath "ou=Servers,dc=windomain,dc=local" -PassThru
 } ElseIf ($hostname -eq "win10") {
   Write-Host "Adding Win10 to the domain. Sometimes this step times out when using VMWare. If that happens, just run 'vagrant reload win10 --provision'" #debug
-  Add-Computer -DomainName "windomain.local" -credential $DomainCred -OUPath "ou=Workstations,dc=windomain,dc=local"
+  Add-Computer -DomainName "WINDOMAIN.local" -credential $DomainCred -OUPath "ou=Workstations,dc=windomain,dc=local"
 } Else {
-  Add-Computer -DomainName "windomain.local" -credential $DomainCred -PassThru
+  Add-Computer -DomainName "WINDOMAIN.local" -credential $DomainCred -PassThru
 }
 
 Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name AutoAdminLogon -Value 1
